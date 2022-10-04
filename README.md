@@ -5,9 +5,11 @@ Websites:
 - https://github.com/trezor/cython-hidapi#install
 - https://juergen.rocks/blog/articles/elv-raumklimastation-rs500-raspberry-pi-linux.html
 
+
 - sudo apt-get install python-dev libusb-1.0-0-dev libudev-dev
 - sudo apt install libhidapi-hidraw0
 - sudo apt install libhidapi-libusb0
+
 
 - sudo pip install hid-tools
 - sudo pip install libusb
@@ -15,17 +17,20 @@ Websites:
 - sudo pip install --upgrade setuptools
 - sudo pip install hidapi
 
+
 - sudo pip3 install hid-tools
 - sudo pip3 install libusb
 - sudo pip3 install hid ! -> nicht
 - sudo pip3 install --upgrade setuptools
 - sudo pip3 install hidapi
 
+
 - sudo pip uninstall hid
 - sudo pip uninstall hidapi
 - sudo pip3 uninstall hid
 - sudo pip3 uninstall hidapi
 - sudo pip install hidapi
+
 
 
 -> am schluss erst einstecken!
