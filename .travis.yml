@@ -1,0 +1,21 @@
+language: python
+
+os: linux
+arch: arm64
+dist: bionic
+
+python:
+  - 3.5
+  - 3.6
+  - 3.7
+  - 3.8
+  - nightly
+
+cache: pip
+
+install:
+  pip install -r src/requirements-test.txt
+
+script:
+  - cd src
+  - py.test --cov --cov-report term-missing --cov-config .coveragerc test/
