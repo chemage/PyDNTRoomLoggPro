@@ -24,7 +24,7 @@ Installatios Befehle für Python
 - sudo pip3 install --upgrade setuptools
 - sudo pip3 install hidapi
 
-
+Falsche Pakete wieder deinstallieren / evtl. gar nicht installieren
 - sudo pip uninstall hid
 - sudo pip uninstall hidapi
 - sudo pip3 uninstall hid
