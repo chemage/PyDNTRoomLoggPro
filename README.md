@@ -1,4 +1,6 @@
 Installation for HID
+-> am schluss erst einstecken!
+
 
 Websites:
 - https://pypi.org/project/hid/
@@ -35,6 +37,11 @@ Falsche Pakete wieder deinstallieren / evtl. gar nicht installieren
 
 -> am schluss erst einstecken!
 
+Probleme hatte ich beim hid-modul, weil python eine Berechtigung gefehlt hat. Geholfen hat:
+sudo nano /etc/udev/rules.d/91-hid.rules <--Nummer ist wichtig
+Dateiinhalt:
+SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="5750", MODE="0666"
+(von "https://juergen.rocks/blog/articles/elv-raumklimastation-rs500-raspberry-pi-linux.html")
 
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=juergen-rocks/raumklima)](https://dependabot.com)
 
