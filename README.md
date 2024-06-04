@@ -65,3 +65,23 @@ A virtual environment can be `deactivate`d.
 `./.venv/bin/python ./src/read_rs500.py`
 
 ![Example 1](doc/img/reader_example1.png "Example 1")
+
+
+## Export to CSV
+
+### Script
+
+`export_rs500_csv.py` reads a reading at a time. 
+
+To read more than one, schedule the script.
+
+### Cron
+
+System cronjob run as user `mgerber`.
+
+```
+# RoomLogg Pro CSV Export
+5 * * * * /home/mgerber/GitRepos/chemage/PyDNTRoomLoggPro/.venv/bin/python /home/mgerber/GitRepos/chemage/PyDNTRoomLoggPro/src/export_rs500_csv.py -f /home/mgerber/RoomLoggPro_Data/roomlogg_data.csv
+```
+
+
