@@ -6,19 +6,27 @@
 # requires python >= 3.10
 
 from rs500reader.reader import Rs500Reader
+import os
 import csv
 import datetime
+import argparse
 
 
+# command line arguments
+parser = argparse.ArgumentParser()
+parser.add_argument('-f', '--csv-file', type=str, default='roomlog_data.csv', help='CSV file for export (default: %(default)s)')
+
+
+# channel to room name mapping
 channel_map = {
-    '1': 'Living Room',
-    '2': 'Bedroom',
-    '3': 'Kitchen',
-    '4': 'Office',
-    '5': 'Hall',
-    '6': '',
-    '7': '',
-    '8': ''
+    1: 'Living Room',
+    2: 'Bedroom',
+    3: 'Kitchen',
+    4: 'Office',
+    5: 'Hall',
+    6: '',
+    7: '',
+    8: ''
 }
 
 
@@ -47,11 +55,18 @@ def export_csv(file:str):
                 row[f"{channel_map[i]} Temp."] = chan_data.temperature
                 row[f"{channel_map[i]} Humid."] = chan_data.humidity
 
-        with open(file, 'w+', newline='') as csvfile:
-            csvwriter = csv.writer(csvfile, delimiter=',', quoting=csv.QUOTE_NONNUMERIC)
+        # check if file exists before creating it
+        write_headers = not os.path.exists(file)
+
+        with open(file, 'a', newline='') as csvfile:
+            csvwriter = csv.DictWriter(csvfile, fieldnames=row.keys(), delimiter=',', quoting=csv.QUOTE_NONNUMERIC)
+            
+            if write_headers: csvwriter.writeheader()
             csvwriter.writerow(row)
+
+        print(f"Output written to '{file}'.")
 
 
 if __name__ == '__main__':
-    export_csv()
-
+    args = parser.parse_args()
+    export_csv(file=args.csv_file)
